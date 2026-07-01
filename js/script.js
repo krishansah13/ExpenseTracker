@@ -84,10 +84,10 @@ function addInExpenses(data) {
 
     const description = document.createElement("p");
     description.innerHTML = `
-        <strong>${data.description}</strong><br>
-        Amount: ₹${data.amount}<br>
-        Category: ${data.category}<br>
-        Date: ${data.date}
+        <h2>${data.description}</h2><br>
+        <b>Amount:</b> <i>₹${data.amount}</i><br>
+        <b>Category:</b> <i>${data.category}</i><br>
+        <b>Date:</b> <i>${data.date}</i>
     `;
 
     const editBtn = document.createElement("button");

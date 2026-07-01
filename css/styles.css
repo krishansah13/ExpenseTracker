@@ -26,6 +26,7 @@ form {
 
 form label {
     color : rgb(255, 227, 227);
+    font-size: 16x;
 }
 
 form input,select {
@@ -51,17 +52,19 @@ form input,select {
 
 
 #total-display {
+    color : rgb(57, 52, 52);
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     padding: 10px;
-    background-color: aqua;
+    background-color:rgba(163, 211, 221, 0.252);
+    max-height : fit-content;
     margin: 10px; 
     min-width: 100px;
     max-width: fit-content;
-    margin-left: auto;
-    margin-right: auto;
+    margin : auto;
+    border: 10px solid green;
 }
 
 #total-display h4 {
@@ -95,5 +98,4 @@ form input,select {
     width: 300px;
     text-align: center;
 }
-
 
