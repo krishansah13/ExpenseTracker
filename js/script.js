@@ -69,7 +69,7 @@ function showData() {
 
     expensesKeeper.innerHTML = "";
 
-    totalDisplay.textContent = totalSum;
+    totalDisplay.textContent = `₹ ${totalSum}`;
 
     const expenses = JSON.parse(localStorage.getItem("expenses")) || [];
 
