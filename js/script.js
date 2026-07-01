@@ -12,6 +12,7 @@ if (!localStorage.getItem("expenses")) {
     }
 }
 
+
 if (!localStorage.getItem("totalSum")) {
     localStorage.setItem("totalSum", "0");
 }
@@ -19,6 +20,22 @@ if (!localStorage.getItem("totalSum")) {
 totalSum = Number(localStorage.getItem("totalSum"));
 
 const form = document.querySelector("form");
+const searchCategory = document.getElementById('category-search');
+const searchButton = document.getElementById("search-button");
+
+searchButton.addEventListener("click", () => {
+    const val = searchCategory.value;
+    const expenses = JSON.parse(localStorage.getItem("expenses")) || [];
+
+    if (val === "") {
+        updateDisplay(expenses); // Show all
+        return;
+    }
+
+    const filtered = expenses.filter(exp => exp.category === val);
+
+    updateDisplay(filtered);
+});
 
 showData();
 dateFormatter();
@@ -63,17 +80,23 @@ form.addEventListener("submit", (e) => {
     showData();
 });
 
-function showData() {
+function updateDisplay(expensesArray) {
     const expensesKeeper = document.getElementById("expensesKeeper");
-    const totalDisplay = document.getElementById("totalTillNow");
 
     expensesKeeper.innerHTML = "";
 
+    expensesArray.forEach(expense => {
+        addInExpenses(expense);
+    });
+}
+
+function showData() {
+    const totalDisplay = document.getElementById("totalTillNow");
     totalDisplay.textContent = `₹ ${totalSum}`;
 
     const expenses = JSON.parse(localStorage.getItem("expenses")) || [];
 
-    expenses.forEach(expense => addInExpenses(expense));
+    updateDisplay(expenses);
 }
 
 function addInExpenses(data) {
@@ -111,19 +134,22 @@ function addInExpenses(data) {
     expensesKeeper.appendChild(card);
 }
 
+
+
+
 function editData(id) {
-        const expenses = JSON.parse(localStorage.getItem("expenses")) || [];
+    const expenses = JSON.parse(localStorage.getItem("expenses")) || [];
 
-        const expense = expenses.find(exp => exp.id == id);
+    const expense = expenses.find(exp => exp.id == id);
 
-        if (!expense) return;
+    if (!expense) return;
 
-        document.querySelector('[name="description"]').value = expense.description;
-        document.querySelector('[name="amount"]').value = expense.amount;
-        document.querySelector('[name="category"]').value = expense.category;
-        document.querySelector('[name="date"]').value = expense.date;
+    document.querySelector('[name="description"]').value = expense.description;
+    document.querySelector('[name="amount"]').value = expense.amount;
+    document.querySelector('[name="category"]').value = expense.category;
+    document.querySelector('[name="date"]').value = expense.date;
 
-        editingId = id;
+    editingId = id;
 }
 
 function deleteData(id) {
