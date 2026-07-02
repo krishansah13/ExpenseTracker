@@ -112,42 +112,65 @@ form input:focus{
 }
 
 /* ---------- Search ---------- */
-
 #container {
+    width: min(1100px, 95%);
     margin: 35px auto;
-    width: fit-content;
-}
-
-#details {
-    text-align: center;
-    margin-bottom: 12px;
-    color: #555;
 }
 
 #search {
-    display: flex;
-    justify-content: center;
-    gap: 12px;
+    display: grid;
+    grid-template-columns: 1fr 220px auto auto;
+    gap: 15px;
+    align-items: center;
+
+    background: white;
+    padding: 18px;
+    border: 1px solid #d8d8d8;
+    border-radius: 10px;
 }
 
-#search select,
-#search-button {
-   
-    padding: 10px 15px;
+#search input,
+#search select {
+    width: 100%;
+    padding: 11px 14px;
+
+    border: 1px solid #cfcfcf;
     border-radius: 6px;
-    border: 1px solid #c7c7c7;
+
+    background: white;
+    font-size: 15px;
+}
+
+#search input:focus,
+#search select:focus {
+    outline: none;
+    border-color: #555;
+}
+
+#search button {
+    padding: 11px 22px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 15px;
 }
 
 #search-button {
     background: #2f3640;
     color: white;
-    cursor: pointer;
+}
+
+#clear-button {
+    background: #e2e2e2;
 }
 
 #search-button:hover {
-    background: #1f252c;
+    background: #222831;
 }
 
+#clear-button:hover {
+    background: #d0d0d0;
+}
 /* ---------- Expense Cards ---------- */
 
 #expensesKeeper {

@@ -22,7 +22,7 @@
 
         <label for="amount">Enter the amount you spent : </label>
         <input type="number" name="amount" placeholder="Enter the amount here..." required>
-        <p id = "numberChecker"></p>
+        <p id="numberChecker"></p>
 
         <label for="">Select the category:</label>
         <select name="category" id="category-select" required>
@@ -48,14 +48,15 @@
         <h4>Total Expense:</h4>
         <p id="totalTillNow"></p>
     </div>
-    <center>
-        <h3 id="details">Details: </h3>
-    </center>
     </div>
+
     <div id="container">
         <div id="search">
-            <select name="category" id="category-search" required>
-                <option value="">All Categories </option>
+
+            <input type="text" id="description-search" placeholder="Search by description...">
+
+            <select id="category-search">
+                <option value="">All Categories</option>
                 <option value="Food">Food</option>
                 <option value="Electricity">Electricity</option>
                 <option value="Rent">Rent</option>
@@ -64,8 +65,17 @@
                 <option value="Party">Party</option>
                 <option value="Other">Other</option>
             </select>
-            <button id="search-button">Search</button>
+
+            <button id="search-button">
+                Search
+            </button>
+
+            <button id="clear-button">
+                Clear
+            </button>
+
         </div>
+
         <div id="expensesKeeper"></div>
     </div>
     <script src="js/script.js"></script>

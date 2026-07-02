@@ -19,8 +19,8 @@ if (!localStorage.getItem("totalSum")) {
 totalSum = Number(localStorage.getItem("totalSum"));
 
 const form = document.querySelector("form");
-const searchCategory = document.getElementById('category-search');
-const searchButton = document.getElementById("search-button");
+// const searchCategory = document.getElementById('category-search');
+// const searchButton = document.getElementById("search-button");
 
 showData();
 dateFormatter();
@@ -70,19 +70,19 @@ form.addEventListener("submit", (e) => {
     showData();
 });
 
-searchButton.addEventListener("click", () => {
-    const val = searchCategory.value;
-    const expenses = JSON.parse(localStorage.getItem("expenses")) || [];
+// searchButton.addEventListener("click", () => {
+//     const val = searchCategory.value;
+//     const expenses = JSON.parse(localStorage.getItem("expenses")) || [];
 
-    if (val === "") {
-        updateDisplay(expenses); 
-        return;
-    }
+//     if (val === "") {
+//         updateDisplay(expenses); 
+//         return;
+//     }
 
-    const filtered = expenses.filter(exp => exp.category === val);
+//     const filtered = expenses.filter(exp => exp.category === val);
 
-    updateDisplay(filtered);
-});
+//     updateDisplay(filtered);
+// });
 
 function showData() {
     const totalDisplay = document.getElementById("totalTillNow");
@@ -188,3 +188,41 @@ function dateFormatter() {
     const formattedToday = `${year}-${mon}-${date}`;
     document.getElementById('date').max = formattedToday;
 }
+
+const searchInput = document.getElementById("description-search");
+const searchCategory = document.getElementById("category-search");
+const searchButton = document.getElementById("search-button");
+const clearButton = document.getElementById("clear-button");
+
+searchButton.addEventListener("click", () => {
+
+    const description = searchInput.value.trim().toLowerCase();
+    const category = searchCategory.value;
+
+    const expenses = JSON.parse(localStorage.getItem("expenses")) || [];
+
+    const filtered = expenses.filter(expense => {
+
+        const matchDescription =
+            description === "" ||
+            expense.description.toLowerCase().includes(description);
+
+        const matchCategory =
+            category === "" ||
+            expense.category === category;
+
+        return matchDescription && matchCategory;
+    });
+
+    updateDisplay(filtered);
+
+});
+
+clearButton.addEventListener("click", () => {
+
+    searchInput.value = "";
+    searchCategory.value = "";
+
+    showData();
+
+});
