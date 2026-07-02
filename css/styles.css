@@ -129,8 +129,7 @@ form input:focus{
     border-radius: 10px;
 }
 
-#search input,
-#search select {
+#search input{
     width: 100%;
     padding: 11px 14px;
 
