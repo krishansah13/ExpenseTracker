@@ -115,10 +115,11 @@ function addInExpenses(data) {
 
     const editBtn = document.createElement("button");
     editBtn.textContent = "Edit";
+    editBtn.setAttribute(id, "editBtn");
 
     const deleteBtn = document.createElement("button");
     deleteBtn.textContent = "Delete";
-
+    deleteBtn.setAttribute(id, "deleteBtn");
     editBtn.addEventListener("click", () => {
         editData(data.id);
     });

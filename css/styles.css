@@ -1,134 +1,194 @@
-header h1{
-    text-decoration: underline;
-    color : teal;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-#wrapper {
-    display: flex;
-    justify-content: space-between;
-    padding : 10px;
+body {
+    font-family: "Segoe UI", sans-serif;
+    background: #ececec;
+    color: #2d2d2d;
+    padding: 30px;
 }
+
+/* ---------- Heading ---------- */
+
+header {
+    margin-bottom: 35px;
+}
+
+header h1 {
+    text-align: center;
+    font-size: 2.2rem;
+    font-weight: 900;
+    text-decoration: underline;
+    color: #2b2b2be8;
+    letter-spacing: 1px;
+}
+
+/* ---------- Form ---------- */
 
 form {
+    width: 430px;
+    max-width: 100%;
+    margin: auto;
     display: flex;
     flex-direction: column;
-    min-width: 100px;
-    max-width: max-content;
-    gap : 10px;
-    border : 10px solid black;
-    padding : 10px;
-    padding-left: 50px;
-    padding-right: 50px;
-    background-color: teal;
-    margin-left: auto; 
-    margin-right: auto;
+    gap: 14px;
+    background: #ffffff;
+    padding: 28px;
+    border-radius: 10px;
+    border: 1px solid #d5d5d5;
 }
 
 form label {
-    color : rgb(255, 227, 227);
-    font-size: 16x;
+    font-size: 15px;
+    color: #555;
 }
 
-form input,select {
-    padding: 8px;
-    border : none;
-    border-radius: 20px;
+form input, form select {
+    padding: 10px 12px;
+    border: 1px solid #c7c7c7;
+    border-radius: 6px;
+    background: #fafafa;
+    font-size: 15px;
 }
 
-#submit{
-    padding: 10px;
-    border-radius: 15px;
-    color :rgb(40, 102, 168);
-    background-color: whitesmoke ;
-    font-weight: bold;
+form input:focus,
+form select:focus {
+    outline: none;
+    border-color: #444;
+    background: white;
+}
+
+#submit {
+    margin-top: 8px;
+    padding: 11px;
+    background: #2f3640;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: .2s;
 }
 
 #submit:hover {
-    transition: 0.5s ease-in-out;
-    background-color : rgb(6, 44, 68);
-    color : white;
-    cursor: pointer;
+    background: #1f252c;
 }
 
+/* ---------- Total ---------- */
 
 #total-display {
-    color : rgb(57, 52, 52);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    padding: 20px;
-    background-color:rgba(163, 211, 221, 0.252);
-    max-height : fit-content;
-    margin: 10px; 
-    min-width: 100px;
-    max-width: fit-content;
-    margin : auto;
-    border: 10px solid green;
-    border-radius: 99px;
+    width: fit-content;
+    margin: 30px auto;
+    background: white;
+    padding: 18px 35px;
+    border-radius: 10px;
+    border: 1px solid #d5d5d5;
+    text-align: center;
 }
 
 #total-display h4 {
-    font-size: 24px;
-    text-decoration: underline;
+    color: #666;
+    margin-bottom: 8px;
+    font-weight: 500;
 }
 
-#total-display p {
-    font-size: 20px;
+#totalTillNow {
+    font-size: 28px;
+    font-weight: bold;
+    color: #222;
+}
+
+/* ---------- Search ---------- */
+
+#container {
+    margin: 35px auto;
+    width: fit-content;
 }
 
 #details {
-    padding:10px;
-    text-decoration: underline;
-}
-
-#container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
+    text-align: center;
+    margin-bottom: 12px;
+    color: #555;
 }
 
 #search {
     display: flex;
-    justify-content: space-between;
-    gap : 10px;
-    border : 1px solid black;
-    padding : 10px;
-    border-radius: 20px;
+    gap: 12px;
 }
 
-#search select {
-    border : 1px solid rgb(37, 6, 117);
-    padding: 10px;
+#search select,
+#search-button {
+    padding: 10px 15px;
+    border-radius: 6px;
+    border: 1px solid #c7c7c7;
 }
 
 #search-button {
-    border: 1px solid black;
-    padding : 10px;
+    background: #2f3640;
+    color: white;
     cursor: pointer;
-    border-radius: 20px;
 }
 
+#search-button:hover {
+    background: #1f252c;
+}
+
+/* ---------- Expense Cards ---------- */
 
 #expensesKeeper {
-    gap : 10px;
-    padding: 10px;
+    margin-top: 35px;
+
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;
+    justify-content: center;
+    gap: 20px;
 }
 
 .card {
+    width: 300px;
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
-    gap : 5px;
-    border : 3px solid teal;
-    padding: 10px;
-    margin-top: 7px;
-    width: 300px;
-    text-align: center;
+    background: white;
+    border: 1px solid #d5d5d5;
+    border-radius: 8px;
+    padding: 18px;
 }
 
+.card h2 {
+    margin-bottom: 10px;
+    font-size: 1.3rem;
+    color: #222;
+}
+
+.card p {
+    line-height: 1.8;
+    color: #555;
+}
+
+.card button {
+    margin-top: 7px;
+    padding: 9px 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.card button:first-of-type {
+    background: #5c677d;
+    color: white;
+}
+
+.card button:first-of-type:hover {
+    background: #495466;
+}
+
+.card button:last-of-type {
+    background: #a33a3a;
+    color: white;
+}
+
+.card button:last-of-type:hover {
+    background: #852d2d;
+}
