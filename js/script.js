@@ -34,11 +34,12 @@ form.addEventListener("submit", (e) => {
 
     if (Number(data.amount) <= 0) {
         numberChecker.innerHTML='The number should be greater than 0';
-        numberChecker.style.color = 'red';
         return;
     } else {
         numberChecker.innerHTML = '';
+        // numberChecker.style.display = "none";
     }
+
 
     let expenses = JSON.parse(localStorage.getItem("expenses")) || [];
 
@@ -135,6 +136,13 @@ function addInExpenses(data) {
     card.appendChild(deleteBtn);
 
     expensesKeeper.appendChild(card);
+
+    editBtn.removeEventListener('click',() => {
+        editData(data.id);
+    });
+    deleteBtn.removeEventListener('click',() => {
+        deleteData(data.id);
+    });
 }
 
 function editData(id) {

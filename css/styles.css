@@ -159,6 +159,12 @@ form input:focus{
     gap: 20px;
 }
 
+#numberChecker {
+    color : red;
+    margin-top : -10px;
+    font-size : 11px;
+}
+
 .card {
     width: 300px;
     display: flex;
