@@ -18,14 +18,15 @@
     </header>
     <form>
         <label for="description">Describe your expense : </label>
-        <input type="text" name="description" placeholder="enter your reason here..." required>
+        <input type="text" name="description" placeholder="Enter your reason here..." required>
 
         <label for="amount">Enter the amount you spent : </label>
-        <input type="number" name="amount" placeholder="enter the amount here..." required>
+        <input type="number" name="amount" placeholder="Enter the amount here..." required>
+        <p id = "numberChecker"></p>
 
         <label for="">Select the category:</label>
         <select name="category" id="category-select" required>
-            <option value="">Please select a category </option>
+            <option value="">Please select a category</option>
             <option value="Food">Food</option>
             <option value="Electricity">Electricity</option>
             <option value="Rent">Rent</option>
@@ -54,7 +55,7 @@
     <div id="container">
         <div id="search">
             <select name="category" id="category-search" required>
-                <option value="">Please select a category </option>
+                <option value="">All Categories </option>
                 <option value="Food">Food</option>
                 <option value="Electricity">Electricity</option>
                 <option value="Rent">Rent</option>

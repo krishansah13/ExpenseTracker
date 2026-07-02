@@ -12,7 +12,6 @@ if (!localStorage.getItem("expenses")) {
     }
 }
 
-
 if (!localStorage.getItem("totalSum")) {
     localStorage.setItem("totalSum", "0");
 }
@@ -23,20 +22,6 @@ const form = document.querySelector("form");
 const searchCategory = document.getElementById('category-search');
 const searchButton = document.getElementById("search-button");
 
-searchButton.addEventListener("click", () => {
-    const val = searchCategory.value;
-    const expenses = JSON.parse(localStorage.getItem("expenses")) || [];
-
-    if (val === "") {
-        updateDisplay(expenses); // Show all
-        return;
-    }
-
-    const filtered = expenses.filter(exp => exp.category === val);
-
-    updateDisplay(filtered);
-});
-
 showData();
 dateFormatter();
 
@@ -45,10 +30,14 @@ form.addEventListener("submit", (e) => {
 
     const formData = new FormData(form);
     const data = Object.fromEntries(formData.entries());
+    const numberChecker = document.getElementById('numberChecker');
 
     if (Number(data.amount) <= 0) {
-        alert("Amount should be greater than 0");
+        numberChecker.innerHTML='The number should be greater than 0';
+        numberChecker.style.color = 'red';
         return;
+    } else {
+        numberChecker.innerHTML = '';
     }
 
     let expenses = JSON.parse(localStorage.getItem("expenses")) || [];
@@ -80,15 +69,19 @@ form.addEventListener("submit", (e) => {
     showData();
 });
 
-function updateDisplay(expensesArray) {
-    const expensesKeeper = document.getElementById("expensesKeeper");
+searchButton.addEventListener("click", () => {
+    const val = searchCategory.value;
+    const expenses = JSON.parse(localStorage.getItem("expenses")) || [];
 
-    expensesKeeper.innerHTML = "";
+    if (val === "") {
+        updateDisplay(expenses); 
+        return;
+    }
 
-    expensesArray.forEach(expense => {
-        addInExpenses(expense);
-    });
-}
+    const filtered = expenses.filter(exp => exp.category === val);
+
+    updateDisplay(filtered);
+});
 
 function showData() {
     const totalDisplay = document.getElementById("totalTillNow");
@@ -99,9 +92,19 @@ function showData() {
     updateDisplay(expenses);
 }
 
-function addInExpenses(data) {
+function updateDisplay(expensesArray) {
     const expensesKeeper = document.getElementById("expensesKeeper");
 
+    expensesKeeper.innerHTML = "";
+
+    expensesArray.forEach(expense => {
+        addInExpenses(expense);
+    });
+}
+
+function addInExpenses(data) {
+    const expensesKeeper = document.getElementById("expensesKeeper");
+    
     const card = document.createElement("div");
     card.className = "card";
 
@@ -115,11 +118,10 @@ function addInExpenses(data) {
 
     const editBtn = document.createElement("button");
     editBtn.textContent = "Edit";
-    editBtn.setAttribute(id, "editBtn");
 
     const deleteBtn = document.createElement("button");
     deleteBtn.textContent = "Delete";
-    deleteBtn.setAttribute(id, "deleteBtn");
+
     editBtn.addEventListener("click", () => {
         editData(data.id);
     });
@@ -135,14 +137,9 @@ function addInExpenses(data) {
     expensesKeeper.appendChild(card);
 }
 
-
-
-
 function editData(id) {
     const expenses = JSON.parse(localStorage.getItem("expenses")) || [];
-
     const expense = expenses.find(exp => exp.id == id);
-
     if (!expense) return;
 
     document.querySelector('[name="description"]').value = expense.description;
@@ -171,7 +168,6 @@ function deleteData(id) {
         editingId = null;
         form.reset();
     }
-
     showData();
 }
 
